@@ -2,7 +2,7 @@ import { expect, test } from 'vitest';
 import request from 'supertest';
 import app from '../app.js'
 import { resetUsersTable } from '../db/helpers.js';
-
+import { pool } from "../db/index.js";
 
 
 test("GET /api/health works", async () => {
@@ -23,6 +23,8 @@ test("GET /api/users", async () => {
   await resetUsersTable()
   const response = await request(app).get ("/api/users");
 })
+
+
 // run tests to make sure the skeleton passes on its own
 // then within the test:
 //    ARRANGE:
